@@ -66,6 +66,7 @@ flowchart LR
 
 ### APP 1 — Ward Zero Home Simulator (`http://localhost:5173`)
 <img src="https://raw.githubusercontent.com/harlinjanold-spec/HOMER/main/Screenshot%202026-11-09%20230122.png" alt="HOMER Screenshot" width="100%">
+
 - **Technology**: React 18, TypeScript, Tailwind CSS, SVG Canvas, Vite.
 - **Environment**: Interactive 2D flat-vector floorplan with 4 rooms (Master Bedroom, Living Room, Kitchen, Bathroom).
 - **Patient Avatar**: Controllable 2D character (Raghav Menon, 72y) supporting walking, sitting, sleeping, drinking, taking medication, using bathroom, and fall simulation via keyboard (`W/A/S/D`, `SPACE`, `B`, `M`, `K`, `U`, `F`) or on-screen controls.
@@ -74,6 +75,7 @@ flowchart LR
 
 ### APP 2 — Ward Zero Healthcare Command Centre (`http://localhost:5174`)
 <img src="https://raw.githubusercontent.com/harlinjanold-spec/HOMER/main/Screenshot%202026-11-09%20230103.png" alt="HOMER Screenshot" width="100%">
+
 - **Technology**: React 18, TypeScript, Tailwind CSS, Recharts, Lucide Icons, Vite.
 - **Visual Design**: Professional dark navy clinical theme (`#0B1120`, `#06B6D4`, `#10B981`) with real-time UTC clock.
 - **Multi-Patient Oversight**: Live monitoring across 4 synthetic patients (`PAT-001` Raghav Menon, `PAT-002` Eleanor Vance, `PAT-003` Marcus Brody, `PAT-004` Clara Oswald).
