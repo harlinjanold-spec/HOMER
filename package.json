@@ -1,0 +1,15 @@
+{
+  "name": "ward-zero-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:sim": "npm run dev --workspace=@wardzero/home-simulator",
+    "dev:cmd": "npm run dev --workspace=@wardzero/healthcare-command-centre",
+    "build": "npm run build --workspaces",
+    "test:backend": "powershell -Command \"backend\\.venv\\Scripts\\pytest.exe backend\\tests -v\""
+  }
+}
+

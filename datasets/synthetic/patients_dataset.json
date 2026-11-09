@@ -1,0 +1,83 @@
+[
+  {
+    "id": "PAT-001",
+    "name": "Raghav Menon",
+    "age": 72,
+    "gender": "Male",
+    "living_arrangement": "Living alone with family check-ins",
+    "room_config": "4-Room Smart Apartment",
+    "condition_summary": "Post-cardiac intervention recovery, stable essential hypertension, mild osteoarthritis.",
+    "assigned_caregiver_id": "CG-001",
+    "baselines": {
+      "heart_rate_bpm": [62.0, 78.0],
+      "blood_pressure_mmHg": "122/78",
+      "spo2_pct": 96.5,
+      "temperature_celsius": 36.8,
+      "respiratory_rate_bpm": 15.5,
+      "daily_steps": 3800,
+      "daily_water_ml": 2100.0,
+      "sleep_hours": 7.5
+    }
+  },
+  {
+    "id": "PAT-002",
+    "name": "Eleanor Vance",
+    "age": 68,
+    "gender": "Female",
+    "living_arrangement": "Home with assistive devices",
+    "room_config": "4-Room Smart Apartment",
+    "condition_summary": "Type 2 diabetes, nocturnal systolic hypertension, gradual decline in daytime mobility.",
+    "assigned_caregiver_id": "CG-002",
+    "baselines": {
+      "heart_rate_bpm": [68.0, 88.0],
+      "blood_pressure_mmHg": "132/84",
+      "spo2_pct": 95.0,
+      "temperature_celsius": 36.7,
+      "respiratory_rate_bpm": 16.5,
+      "daily_steps": 2200,
+      "daily_water_ml": 1600.0,
+      "sleep_hours": 6.5
+    }
+  },
+  {
+    "id": "PAT-003",
+    "name": "Marcus Brody",
+    "age": 79,
+    "gender": "Male",
+    "living_arrangement": "Suburban home with occasional remote monitoring",
+    "room_config": "4-Room Smart Apartment",
+    "condition_summary": "Chronic kidney disease stage 2, mild cognitive impairment, frequent sensor connectivity drops.",
+    "assigned_caregiver_id": "CG-003",
+    "baselines": {
+      "heart_rate_bpm": [64.0, 82.0],
+      "blood_pressure_mmHg": "128/82",
+      "spo2_pct": 95.5,
+      "temperature_celsius": 36.6,
+      "respiratory_rate_bpm": 17.0,
+      "daily_steps": 2800,
+      "daily_water_ml": 1800.0,
+      "sleep_hours": 7.0
+    }
+  },
+  {
+    "id": "PAT-004",
+    "name": "Clara Oswald",
+    "age": 81,
+    "gender": "Female",
+    "living_arrangement": "Living alone, high fall risk protocol active",
+    "room_config": "4-Room Smart Apartment",
+    "condition_summary": "History of syncopal falls, paroxysmal atrial fibrillation, unacknowledged alert test subject.",
+    "assigned_caregiver_id": "CG-001",
+    "baselines": {
+      "heart_rate_bpm": [65.0, 92.0],
+      "blood_pressure_mmHg": "135/86",
+      "spo2_pct": 94.5,
+      "temperature_celsius": 36.9,
+      "respiratory_rate_bpm": 18.0,
+      "daily_steps": 1800,
+      "daily_water_ml": 1500.0,
+      "sleep_hours": 6.0
+    }
+  }
+]
+

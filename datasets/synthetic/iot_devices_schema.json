@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WardZeroTelemetryEvent",
+  "type": "object",
+  "required": [
+    "event_id",
+    "patient_id",
+    "device_id",
+    "sensor_id",
+    "source",
+    "measurement",
+    "value",
+    "unit",
+    "timestamp",
+    "quality"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Unique deterministic or UUID event identifier for idempotency guarantee"
+    },
+    "patient_id": {
+      "type": "string",
+      "enum": ["PAT-001", "PAT-002", "PAT-003", "PAT-004"]
+    },
+    "device_id": {
+      "type": "string",
+      "description": "ID of originating smart everyday object or wearable"
+    },
+    "sensor_id": {
+      "type": "string",
+      "description": "ID of specific transducer sensor"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["simulation", "manual", "derived", "laboratory"]
+    },
+    "measurement": {
+      "type": "string",
+      "enum": [
+        "heart_rate",
+        "ecg",
+        "blood_pressure_sys",
+        "blood_pressure_dia",
+        "spo2",
+        "skin_temperature",
+        "respiratory_rate",
+        "step_count",
+        "foot_pressure",
+        "walking_speed",
+        "gait_variation",
+        "bed_occupancy",
+        "sleep_duration",
+        "water_volume",
+        "daily_water_ml",
+        "body_weight",
+        "bmi",
+        "fall_impact"
+      ]
+    },
+    "value": {
+      "type": "number"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "quality": {
+      "type": "string",
+      "enum": ["valid", "questionable", "fault", "stale", "delayed"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
+

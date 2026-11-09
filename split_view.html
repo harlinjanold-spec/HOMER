@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ward Zero • Dual Workspace (Home Simulator + Command Centre)</title>
+  <link rel="icon" href="wardzero.ico">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #1a222c;
+      color: #f1f5f9;
+    }
+    /* Clinical Top Switcher Bar */
+    header {
+      height: 44px;
+      background: linear-gradient(180deg, #445468 0%, #303c4c 100%);
+      border-bottom: 2px solid #576b85;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 50;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+    .brand-badge {
+      background: #0f172a;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-size: 10px;
+      font-family: monospace;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .status-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 11px;
+      font-family: monospace;
+    }
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #cbd5e1;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00ff44;
+      box-shadow: 0 0 8px #00ff44;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn {
+      background: linear-gradient(180deg, #6c7e96 0%, #4c5c70 100%);
+      border-top: 1.5px solid #94a7c2;
+      border-left: 1.5px solid #94a7c2;
+      border-right: 1.5px solid #232c37;
+      border-bottom: 2px solid #1a222c;
+      border-radius: 5px;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 5px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.1s ease;
+    }
+    .btn:hover {
+      background: linear-gradient(180deg, #7b8ea7 0%, #596b81 100%);
+    }
+    .btn:active, .btn.active {
+      background: linear-gradient(180deg, #374453 0%, #4a5a6e 100%);
+      border-top: 1.5px solid #1a222c;
+      border-left: 1.5px solid #1a222c;
+      border-right: 1.5px solid #7d90aa;
+      border-bottom: 1.5px solid #7d90aa;
+    }
+    .btn-action {
+      background: linear-gradient(180deg, #0ea5e9 0%, #0284c7 100%);
+      border-top-color: #7dd3fc;
+      border-left-color: #7dd3fc;
+      border-right-color: #0369a1;
+      border-bottom-color: #0c4a6e;
+      color: #082f49;
+      font-weight: 900;
+    }
+    .btn-action:hover {
+      background: linear-gradient(180deg, #38bdf8 0%, #0369a1 100%);
+    }
+
+    /* Dual Pane Container */
+    #workspace {
+      display: flex;
+      width: 100%;
+      height: calc(100% - 44px);
+      position: relative;
+    }
+    .pane {
+      height: 100%;
+      position: relative;
+      transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .pane-header {
+      height: 28px;
+      background: #232c37;
+      border-bottom: 1px solid #384656;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      font-size: 11px;
+      font-family: monospace;
+      font-weight: bold;
+      color: #94a3b8;
+    }
+    .pane-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #ffffff;
+    }
+    iframe {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #0f172a;
+    }
+    .divider {
+      width: 6px;
+      height: 100%;
+      background: #374556;
+      cursor: col-resize;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      border-left: 1px solid #4a5c72;
+      border-right: 1px solid #1a222c;
+    }
+    .divider:hover {
+      background: #38bdf8;
+    }
+    .divider-handle {
+      width: 2px;
+      height: 28px;
+      background: #8ea2bd;
+      border-radius: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span>WARD ZERO</span>
+      <span class="brand-badge">DUAL RUNTIME</span>
+      <span style="font-weight: normal; color: #94a3b8; font-size: 11px;">Simultaneous Multi-App Healthcare Engine</span>
+    </div>
+
+    <div class="status-group">
+      <div class="status-item">
+        <span class="dot"></span>
+        <span>App 1: Simulator (:5173)</span>
+      </div>
+      <div class="status-item">
+        <span class="dot"></span>
+        <span>App 2: Command Centre (:5174)</span>
+      </div>
+      <div class="status-item">
+        <span class="dot"></span>
+        <span>Backend (:8000)</span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn active" id="btnSplit" onclick="setMode('split')">50 / 50 Split</button>
+      <button class="btn" id="btnSim" onclick="setMode('sim')">🏠 Full Simulator</button>
+      <button class="btn" id="btnCC" onclick="setMode('cc')">🏥 Full Command Centre</button>
+      <button class="btn btn-action" onclick="openDualTabs()">↗️ Open in Separate Tabs</button>
+    </div>
+  </header>
+
+  <div id="workspace">
+    <!-- Left Pane: Home Simulator -->
+    <div class="pane" id="paneLeft" style="width: 50%;">
+      <div class="pane-header">
+        <span class="pane-title">🏠 PATIENT HOME SIMULATOR (APP 1)</span>
+        <div style="display: flex; gap: 8px;">
+          <a href="http://localhost:5173" target="_blank" style="color: #38bdf8; text-decoration: none;">External ↗</a>
+          <span style="cursor: pointer;" onclick="document.getElementById('frameSim').src = 'http://localhost:5173';">🔄 Reload</span>
+        </div>
+      </div>
+      <iframe id="frameSim" src="http://localhost:5173" title="Home Simulator"></iframe>
+    </div>
+
+    <div class="divider" id="dragDivider">
+      <div class="divider-handle"></div>
+    </div>
+
+    <!-- Right Pane: Healthcare Command Centre -->
+    <div class="pane" id="paneRight" style="width: calc(50% - 6px);">
+      <div class="pane-header">
+        <span class="pane-title">🏥 HEALTHCARE COMMAND CENTRE (APP 2)</span>
+        <div style="display: flex; gap: 8px;">
+          <a href="http://localhost:5174" target="_blank" style="color: #00ff44; text-decoration: none;">External ↗</a>
+          <span style="cursor: pointer;" onclick="document.getElementById('frameCC').src = 'http://localhost:5174';">🔄 Reload</span>
+        </div>
+      </div>
+      <iframe id="frameCC" src="http://localhost:5174" title="Healthcare Command Centre"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function setMode(mode) {
+      const pLeft = document.getElementById('paneLeft');
+      const pRight = document.getElementById('paneRight');
+      const divider = document.getElementById('dragDivider');
+      const btnSplit = document.getElementById('btnSplit');
+      const btnSim = document.getElementById('btnSim');
+      const btnCC = document.getElementById('btnCC');
+
+      btnSplit.classList.remove('active');
+      btnSim.classList.remove('active');
+      btnCC.classList.remove('active');
+
+      if (mode === 'split') {
+        pLeft.style.display = 'flex';
+        pRight.style.display = 'flex';
+        divider.style.display = 'flex';
+        pLeft.style.width = '50%';
+        pRight.style.width = 'calc(50% - 6px)';
+        btnSplit.classList.add('active');
+      } else if (mode === 'sim') {
+        pLeft.style.display = 'flex';
+        pRight.style.display = 'none';
+        divider.style.display = 'none';
+        pLeft.style.width = '100%';
+        btnSim.classList.add('active');
+      } else if (mode === 'cc') {
+        pLeft.style.display = 'none';
+        pRight.style.display = 'flex';
+        divider.style.display = 'none';
+        pRight.style.width = '100%';
+        btnCC.classList.add('active');
+      }
+    }
+
+    function openDualTabs() {
+      window.open('http://localhost:5173', '_blank');
+      window.open('http://localhost:5174', '_blank');
+    }
+
+    // Draggable Divider
+    let isDragging = false;
+    const divider = document.getElementById('dragDivider');
+    const pLeft = document.getElementById('paneLeft');
+    const pRight = document.getElementById('paneRight');
+
+    divider.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      document.body.style.cursor = 'col-resize';
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      document.body.style.cursor = 'default';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const totalWidth = window.innerWidth;
+      const leftWidthPercent = (e.clientX / totalWidth) * 100;
+      if (leftWidthPercent > 15 && leftWidthPercent < 85) {
+        pLeft.style.width = leftWidthPercent + '%';
+        pRight.style.width = `calc(${100 - leftWidthPercent}% - 6px)`;
+      }
+    });
+  </script>
+</body>
+</html>
+

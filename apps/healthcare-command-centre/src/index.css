@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #2b3644;
+    color: #f1f5f9;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    user-select: none;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Authentic Hospital ICU Hardware Beveled Buttons */
+.clinical-btn {
+  background: linear-gradient(180deg, #7889a2 0%, #57677d 100%);
+  border-top: 1.5px solid #a3b4ce;
+  border-left: 1.5px solid #a3b4ce;
+  border-right: 1.5px solid #334050;
+  border-bottom: 2px solid #25303d;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.clinical-btn:hover {
+  background: linear-gradient(180deg, #8798b2 0%, #617289 100%);
+}
+
+.clinical-btn:active,
+.clinical-btn.active {
+  background: linear-gradient(180deg, #445367 0%, #586980 100%);
+  border-top: 1.5px solid #25303d;
+  border-left: 1.5px solid #25303d;
+  border-right: 1.5px solid #8d9eb7;
+  border-bottom: 1.5px solid #8d9eb7;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Hospital Hardware Panel Chassis */
+.clinical-panel {
+  background: linear-gradient(180deg, #455569 0%, #364455 100%);
+  border-top: 2px solid #71839b;
+  border-left: 2px solid #71839b;
+  border-right: 2px solid #1e2630;
+  border-bottom: 2px solid #161c24;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+/* Recessed Black Telemetry Display */
+.clinical-display {
+  background: #000000;
+  border-top: 2px solid #121820;
+  border-left: 2px solid #121820;
+  border-right: 1.5px solid #4a596e;
+  border-bottom: 1.5px solid #4a596e;
+  border-radius: 6px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* Clinical Sub-Panel */
+.clinical-subpanel {
+  background: #4e5f75;
+  border-top: 1.5px solid #72849c;
+  border-left: 1.5px solid #72849c;
+  border-right: 1.5px solid #283442;
+  border-bottom: 1.5px solid #202b37;
+  border-radius: 6px;
+}
+
+/* Universal Hospital Telemetry Chassis Mappings for Seamless Consistency */
+.bg-\[\#060911\],
+.bg-\[\#070b19\],
+.bg-\[\#070b14\] {
+  background-color: #2b3644 !important;
+}
+
+.bg-\[\#0b0f19\],
+.bg-\[\#0d1527\] {
+  background: linear-gradient(180deg, #445468 0%, #364455 100%) !important;
+  border-top-color: #71839b !important;
+  border-left-color: #71839b !important;
+  border-right-color: #1e2630 !important;
+  border-bottom-color: #161c24 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45) !important;
+}
+
+.bg-\[\#121d36\],
+.bg-\[\#182747\] {
+  background-color: #1b242e !important;
+  border-color: #3b495b !important;
+}
+
+.border-\[\#1e2d4d\],
+.border-slate-800\/90,
+.border-slate-800\/80 {
+  border-color: #3b495b !important;
+}
+
+/* Custom Scrollbar for Hospital Console */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #202936;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #47576d;
+  border-radius: 4px;
+  border: 1px solid #637792;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #637792;
+}
