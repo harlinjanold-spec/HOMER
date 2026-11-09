@@ -2,6 +2,7 @@
 ### An Intelligent Virtual Home Hospital Prototype
 **Operation Ward Zero — Hackathon Submission**
 
+https://github.com/harlinjanold-spec/HOMER/blob/bc7c1196d3f614861ed916f1de4cd5ef53ddde50/HOMER%20Smart%20Home%20Wellness%20System.png
 ---
 
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg?style=flat&logo=fastapi)](https://fastapi.tiangolo.com)
@@ -12,7 +13,6 @@
 [![Test Suite](https://img.shields.io/badge/Verification-23%2F23%20Criteria%20Passed-10B981.svg?style=flat)](#verification--test-results)
 
 ---
-https://github.com/harlinjanold-spec/HOMER/blob/main/HOMER%20Smart%20Home%20Wellness%20System.png?raw=true
 
 ## 1. Executive Summary & Vision
 
