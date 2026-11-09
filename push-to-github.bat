@@ -3,29 +3,38 @@ title Push Ward Zero to GitHub
 cd /d "%~dp0"
 echo ========================================================
 echo        WARD ZERO GITHUB PUSH UTILITY
+echo        Target Account: https://github.com/harlinjanold-spec
 echo ========================================================
 echo.
-git remote -v
+
+:: Ensure origin is set to user's repo
+git remote remove origin 2>nul
+git remote add origin https://github.com/harlinjanold-spec/HOMER.git
+
+echo Configured Remote: https://github.com/harlinjanold-spec/HOMER.git
 echo.
-set /p REPO_URL="Enter your GitHub Repository URL (e.g. https://github.com/YourUsername/HOMER.git): "
-if not "%REPO_URL%"=="" (
-    git remote remove origin 2>nul
-    git remote add origin %REPO_URL%
-    echo Remote 'origin' configured to: %REPO_URL%
-)
+echo NOTE: Make sure you have created the empty repository "HOMER" 
+echo at https://github.com/new before pushing!
 echo.
-echo Pushing branch 'main' to GitHub (including video and executable)...
+echo Press any key to push branch 'main' (including 85MB video and executable)...
+pause >nul
+echo.
+echo Uploading to GitHub... (This may take a moment for the 85MB video)
 git branch -M main
 git push -u origin main
 echo.
 if %ERRORLEVEL% EQU 0 (
     echo ========================================================
     echo  SUCCESS: Ward Zero has been uploaded to your GitHub!
+    echo  View it at: https://github.com/harlinjanold-spec/HOMER
     echo ========================================================
 ) else (
     echo.
-    echo If authentication failed, Git Credential Manager will prompt
-    echo you to sign in to your GitHub account in your browser.
+    echo If you see "Repository not found":
+    echo 1. Open https://github.com/new in your browser.
+    echo 2. Set repository name to "HOMER".
+    echo 3. Click "Create repository".
+    echo 4. Run this script again!
 )
 echo.
 pause
