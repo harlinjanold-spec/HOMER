@@ -12,6 +12,7 @@
 [![Test Suite](https://img.shields.io/badge/Verification-23%2F23%20Criteria%20Passed-10B981.svg?style=flat)](#verification--test-results)
 
 ---
+https://github.com/harlinjanold-spec/HOMER/blob/main/HOMER%20Smart%20Home%20Wellness%20System.png?raw=true
 
 ## 1. Executive Summary & Vision
 
