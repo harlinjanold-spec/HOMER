@@ -31,7 +31,7 @@ Patients wear ordinary loungewear, walk in comfortable slippers, sleep on their 
 Per the hackathon architectural mandate, Ward Zero consists of **two completely independent frontend applications** connected via a high-performance, asynchronous Python backend:
 
 ```mermaid
-graph LR
+flowchart LR
     subgraph Client1["APP 1: Virtual Home Simulator (:5173)"]
         A1["2D SVG Interactive Home"]
         A2["Patient Avatar (W/A/S/D Controls)"]
@@ -46,23 +46,21 @@ graph LR
         B4["Contextual AI & IsolationForest"]
         B5["Auditable Alert Escalation Engine"]
         B6["Bi-directional Remote Command Hub"]
-        B7["SQLite Database (ward_zero.db)"]
+        B7["SQLite Database"]
     end
 
     subgraph Client2["APP 2: Healthcare Command Centre (:5174)"]
-        C1["Dark Navy Clinical Dashboard"]
+        C1["ICU Bedside Telemetry Monitor"]
         C2["Multi-Patient Monitoring (PAT-001 - 004)"]
-        C3["Live Recharts Telemetry Streams"]
+        C3["Live Waveform Sweeps & Trends"]
         C4["Explainable AI Risk & Predictions"]
         C5["Virtual Nurse Station & Triage"]
         C6["Remote Home Controls"]
         C7["Fault Injection & Reliability Lab"]
     end
 
-    Client1 -->|Real-Time Telemetry| Backend
-    Backend <-->|Bi-directional WebSocket (/ws)| Client1
-    Backend <-->|Bi-directional WebSocket (/ws)| Client2
-    Client2 -->|Remote Commands & Triage| Backend
+    Client1 <-->|"WebSocket Telemetry & Remote Commands"| Backend
+    Backend <-->|"WebSocket Feeds & Clinical Actions"| Client2
 ```
 
 ### APP 1 — Ward Zero Home Simulator (`http://localhost:5173`)

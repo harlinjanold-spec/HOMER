@@ -73,7 +73,7 @@ graph TB
     OffQueue --> ClientREST1
     SensEngine --> ClientWS1
     ClientREST1 -->|Telemetry Stream| Router
-    ClientWS1 <-->|Bi-directional WS| Router
+    ClientWS1 <-->|"Bi-directional WS"| Router
 
     Router --> Ingest
     Ingest --> DB
@@ -82,7 +82,7 @@ graph TB
     RiskEngine --> AlertEngine
     AlertEngine --> Router
 
-    Router <-->|Bi-directional WS| ClientWS2
+    Router <-->|"Bi-directional WS"| ClientWS2
     Router --> ClientREST2
     ClientREST2 --> UI2
     RemoteCmd -->|Remote Action| Router
